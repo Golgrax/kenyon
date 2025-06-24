@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kenyon Tacda (Blythe_Ken) - Portfolio</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+    <!-- AOS (Animate On Scroll) -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-pink: #ec4899;
+            --primary-purple: #a855f7;
+            --dark-purple: #4A044E;
+            --light-pink: #fdf6fd;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --neon-glow: 0 0 20px rgba(236, 72, 153, 0.6);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(45deg, #fdf6fd, #f3e8ff, #ede9fe);
+            color: var(--dark-purple);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Particle Background */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        /* Animated Background Gradient */
+        .animated-bg {
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Glowing Text Effects */
+        .glow-text {
+            text-shadow: 0 0 10px rgba(236, 72, 153, 0.8),
+                         0 0 20px rgba(236, 72, 153, 0.6),
+                         0 0 30px rgba(236, 72, 153, 0.4);
+        }
+
+        .neon-text {
+            color: #fff;
+            text-shadow: 0 0 5px #ec4899,
+                         0 0 10px #ec4899,
+                         0 0 15px #ec4899,
+                         0 0 20px #ec4899;
+        }
+
+        /* Floating Animation */
+        .float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Pulse Animation */
+        .pulse-glow {
+            animation: pulseGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            from {
+                box-shadow: 0 0 20px rgba(236, 72, 153, 0.5);
+            }
+            to {
+                box-shadow: 0 0 40px rgba(236, 72, 153, 0.8),
+                           0 0 60px rgba(168, 85, 247, 0.6);
+            }
+        }
+
+        /* Typing Effect */
+        .typewriter {
+            overflow: hidden;
+            border-right: .15em solid #ec4899;
+            white-space: nowrap;
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #ec4899; }
+        }
+
+        /* 3D Card Effects */
+        .card-3d {
+            perspective: 1000px;
+            transition: all 0.3s ease;
+        }
+
+        .card-3d:hover .card-inner {
+            transform: rotateY(10deg) rotateX(5deg);
+        }
+
+        .card-inner {
+            position: relative;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        /* Morphing Button */
+        .morph-btn {
+            position: relative;
+            background: linear-gradient(45deg, #ec4899, #a855f7);
+            border: none;
+            border-radius: 50px;
+            color: white;
+            padding: 15px 30px;
+            font-weight: 600;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .morph-btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .morph-btn:hover:before {
+            left: 100%;
+        }
+
+        .morph-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(236, 72, 153, 0.4);
+        }
+
+        /* Skill Bar Animation */
+        .skill-bar {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+
+        .skill-progress {
+            height: 8px;
+            background: linear-gradient(90deg, #ec4899, #a855f7);
+            border-radius: 10px;
+            transition: width 2s ease-in-out;
+            position: relative;
+        }
+
+        .skill-progress:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background-image: linear-gradient(
+                -45deg,
+                rgba(255, 255, 255, .2) 25%,
+                transparent 25%,
+                transparent 50%,
+                rgba(255, 255, 255, .2) 50%,
+                rgba(255, 255, 255, .2) 75%,
+                transparent 75%,
+                transparent
+            );
+            z-index: 1;
+            background-size: 50px 50px;
+            animation: move 2s linear infinite;
+        }
+
+        @keyframes move {
+            0% { background-position: 0 0; }
+            100% { background-position: 50px 50px; }
+        }
+
+        /* Magnetic Effect */
+        .magnetic {
+            transition: transform 0.3s ease;
+        }
+
+        .magnetic:hover {
+            transform: scale(1.05);
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ec4899, #a855f7);
+            z-index: 1000;
+            transition: width 0.3s ease;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(236, 72, 153, 0.1);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #ec4899, #a855f7);
+            border-radius: 10px;
+        }
+
+        /* Ripple Effect */
+        .ripple {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ripple:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .ripple:hover:before {
+            width: 300px;
+            height: 300px;
+        }
+
+        /* Parallax Elements */
+        .parallax-element {
+            position: absolute;
+            opacity: 0.7;
+        }
+
+        .parallax-circle {
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.3), rgba(168, 85, 247, 0.1));
+        }
+
+        /* Glass Morphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+        }
+
+        /* Project Hover Effects */
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px) rotate(2deg);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(236, 72, 153, 0.8), rgba(168, 85, 247, 0.8));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        /* Navbar Blur Effect */
+        .navbar-blur {
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Social Icons Hover */
+        .social-icon {
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-5px) rotate(360deg);
+            color: #fff;
+        }
+
+        .social-icon:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.6), transparent);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+
+        .social-icon:hover:before {
+            width: 60px;
+            height: 60px;
+        }
+
+        /* Enhanced Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .typewriter {
+                font-size: 2rem;
+            }
+
+            .card-3d:hover .card-inner {
+                transform: none;
+            }
+
+            .project-card:hover {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* PDF Export Optimization */
+        @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+
+            body {
+                background: white !important;
+                color: black !important;
+            }
+
+            .animated-bg, #particles-js {
+                display: none !important;
+            }
+
+            .glow-text, .neon-text {
+                text-shadow: none !important;
+                color: black !important;
+            }
+
+            .glass {
+                background: white !important;
+                backdrop-filter: none !important;
+                border: 1px solid #ccc !important;
+            }
+
+            .navbar-blur {
+                display: none !important;
+            }
+
+            .scroll-indicator {
+                display: none !important;
+            }
+
+            .project-overlay {
+                display: none !important;
+            }
+
+            .parallax-element {
+                display: none !important;
+            }
+
+            section {
+                page-break-inside: avoid;
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-indicator" id="scrollIndicator"></div>
+
+    <!-- Floating Parallax Elements -->
+    <div class="parallax-element parallax-circle" style="width: 100px; height: 100px; top: 10%; left: 10%;"></div>
+    <div class="parallax-element parallax-circle" style="width: 150px; height: 150px; top: 20%; right: 15%;"></div>
+    <div class="parallax-element parallax-circle" style="width: 80px; height: 80px; bottom: 30%; left: 20%;"></div>
+    <div class="parallax-element parallax-circle" style="width: 120px; height: 120px; bottom: 20%; right: 10%;"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 navbar-blur transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#hero" class="text-2xl font-bold neon-text font-pacifico">Blythe_Ken</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#about" class="hover:text-pink-500 transition-colors magnetic">About</a>
+                    <a href="#skills" class="hover:text-pink-500 transition-colors magnetic">Skills</a>
+                    <a href="#projects" class="hover:text-pink-500 transition-colors magnetic">Projects</a>
+                    <a href="#experience" class="hover:text-pink-500 transition-colors magnetic">Experience</a>
+                    <a href="#contact" class="hover:text-pink-500 transition-colors magnetic">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="min-h-screen flex items-center justify-center animated-bg relative overflow-hidden">
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <div class="mb-8" data-aos="fade-down" data-aos-duration="1000">
+                <img src="assets/me.png" alt="Kenyon Tacda" class="w-64 h-64 rounded-full mx-auto shadow-2xl pulse-glow float border-4 border-white">
+            </div>
+            <h1 class="text-6xl md:text-8xl font-bold text-white mb-4 typewriter font-pacifico" data-aos="fade-up" data-aos-delay="500">
+                Hi, I'M BLYTHE_KEN
+            </h1>
+            <p class="text-2xl md:text-3xl text-white mb-6 glow-text" data-aos="fade-up" data-aos-delay="700">
+                Inspiring Vlogger and Editor
+            </p>
+            <p class="text-xl text-gray-200 mb-8" data-aos="fade-up" data-aos-delay="900">
+                Kenyon Tacda
+            </p>
+            <button class="morph-btn text-lg" data-aos="zoom-in" data-aos-delay="1100" onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">
+                Discover My World
+            </button>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-6 relative">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class="text-5xl font-bold text-center mb-12 glow-text font-pacifico" data-aos="fade-down">About Me</h2>
+            <div class="glass p-8 rounded-3xl" data-aos="fade-up" data-aos-delay="200">
+                <p class="text-lg md:text-xl leading-relaxed text-center">
+                    I'm Kenyon Tacda, also known as <span class="font-bold text-pink-500">Blythe_Ken</span>.
+                    I'm a creative and fashion-forward individual with a deep passion for
+                    <span class="font-semibold highlight-pink">fashion design</span>,
+                    <span class="font-semibold text-purple-500">beauty</span>, and the
+                    <span class="font-semibold text-pink-500">visual arts</span>.
+                    I believe beauty is a form of self-expression, and I thrive on expressing my creativity
+                    through styling, video editing, and artwork creation. I love all things creative—from
+                    designing clothes to experimenting with skincare and makeup. I'm always eager to learn,
+                    create, and grow in the world of fashion and beauty, seeking opportunities to bring
+                    personality and style to life.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 px-6 relative">
+        <div class="container mx-auto max-w-6xl">
+            <h2 class="text-5xl font-bold text-center mb-12 glow-text font-pacifico" data-aos="fade-down">My Skills</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Skill Cards -->
+                <div class="card-3d" data-aos="flip-left" data-aos-delay="100">
+                    <div class="card-inner glass p-6 rounded-2xl ripple magnetic">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-tshirt text-4xl text-pink-500 mr-4 float"></i>
+                            <h3 class="text-xl font-bold">Fashion Styling</h3>
+                        </div>
+                        <p class="text-gray-700 mb-4">Casual, Semi-Casual, Formal. Creating looks that tell a story.</p>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-3d" data-aos="flip-left" data-aos-delay="200">
+                    <div class="card-inner glass p-6 rounded-2xl ripple magnetic">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-paint-brush text-4xl text-purple-500 mr-4 float"></i>
+                            <h3 class="text-xl font-bold">Beauty Enthusiast</h3>
+                        </div>
+                        <p class="text-gray-700 mb-4">Skincare routines and makeup application. Passionate about product knowledge.</p>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-3d" data-aos="flip-left" data-aos-delay="300">
+                    <div class="card-inner glass p-6 rounded-2xl ripple magnetic">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-video text-4xl text-pink-500 mr-4 float"></i>
+                            <h3 class="text-xl font-bold">Video Editing</h3>
+                        </div>
+                        <p class="text-gray-700 mb-4">CapCut, VN, or similar apps. Bringing creative visions to life through video.</p>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 75%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-3d" data-aos="flip-left" data-aos-delay="400">
+                    <div class="card-inner glass p-6 rounded-2xl ripple magnetic">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-palette text-4xl text-purple-500 mr-4 float"></i>
+                            <h3 class="text-xl font-bold">Artwork & Design</h3>
+                        </div>
+                        <p class="text-gray-700 mb-4">Traditional drawing and digital art creation. Expressing ideas visually.</p>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-3d" data-aos="flip-left" data-aos-delay="500">
+                    <div class="card-inner glass p-6 rounded-2xl ripple magnetic">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-lightbulb text-4xl text-pink-500 mr-4 float"></i>
+                            <h3 class="text-xl font-bold">Trend Awareness</h3>
+                        </div>
+                        <p class="text-gray-700 mb-4">Keen eye for current and emerging trends in fashion and beauty.</p>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 95%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-3d" data-aos="flip-left" data-aos-delay="600">
+                    <div class="card-inner glass p-6 rounded-2xl ripple magnetic">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-camera-retro text-4xl text-purple-500 mr-4 float"></i>
+                            <h3 class="text-xl font-bold">Content Creation</h3>
+                        </div>
+                        <p class="text-gray-700 mb-4">Developing engaging content for style blogging and social media.</p>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 88%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 px-6 animated-bg relative">
+        <div class="container mx-auto max-w-7xl">
+            <h2 class="text-5xl font-bold text-center mb-12 text-white neon-text font-pacifico" data-aos="fade-down">My Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <!-- Project Card 1: Live Digital Clock -->
+    <a href="projects/Clock.html" target="_blank" rel="noopener noreferrer">
+        <div class="project-card glass h-full flex flex-col p-6" data-aos="zoom-in" data-aos-delay="100">
+            <h3 class="text-xl font-bold mb-2">Live Digital Clock</h3>
+            <p class="text-gray-700 flex-grow">A real-time digital clock built with JavaScript's Date object and updated every second using setInterval.</p>
+        </div>
+    </a>
+
+    <!-- Project Card 2: JS Events Demo -->
+    <a href="projects/Sample13.html" target="_blank" rel="noopener noreferrer">
+        <div class="project-card glass h-full flex flex-col p-6" data-aos="zoom-in" data-aos-delay="200">
+            <h3 class="text-xl font-bold mb-2">JavaScript Events Demo</h3>
+            <p class="text-gray-700 flex-grow">An interactive demonstration of various JavaScript DOM events like onclick, onblur, onkeydown, and onmouseover.</p>
+        </div>
+    </a>
+
+    <!-- Project Card 3: JS Numeric Functions -->
+    <a href="projects/Sample16.html" target="_blank" rel="noopener noreferrer">
+        <div class="project-card glass h-full flex flex-col p-6" data-aos="zoom-in" data-aos-delay="300">
+            <h3 class="text-xl font-bold mb-2">JS Numeric Functions</h3>
+            <p class="text-gray-700 flex-grow">Explores core JavaScript numeric functions including parseInt, parseFloat, Math.round, Math.sqrt, and more.</p>
+        </div>
+    </a>
+
+    <!-- Project Card 4: Core JS Dialogs -->
+    <a href="projects/Sample14.html" target="_blank" rel="noopener noreferrer">
+        <div class="project-card glass h-full flex flex-col p-6" data-aos="zoom-in" data-aos-delay="400">
+            <h3 class="text-xl font-bold mb-2">Core JS Dialogs</h3>
+            <p class="text-gray-700 flex-grow">Demonstrates fundamental browser interactions using alert(), confirm(), prompt(), and document.write().</p>
+        </div>
+    </a>
+
+    <!-- Project Card 5: HTML Student Form -->
+    <a href="projects/Sample12.html" target="_blank" rel="noopener noreferrer">
+        <div class="project-card glass h-full flex flex-col p-6" data-aos="zoom-in" data-aos-delay="500">
+            <h3 class="text-xl font-bold mb-2">HTML Student Form</h3>
+            <p class="text-gray-700 flex-grow">A comprehensive HTML form showcasing various input types, including text, select, checkbox, and radio buttons.</p>
+        </div>
+    </a>
+
+    <!-- Project Card 6: HTML Frames Demo -->
+    <a href="projects/Frame_AB.html" target="_blank" rel="noopener noreferrer">
+        <div class="project-card glass h-full flex flex-col p-6" data-aos="zoom-in" data-aos-delay="600">
+            <h3 class="text-xl font-bold mb-2">HTML Frames Demo</h3>
+            <p class="text-gray-700 flex-grow">A classic example of using iframes to embed and display multiple HTML documents within a single parent page.</p>
+        </div>
+    </a>
+
+    <!-- Project Card 7: Advanced Table Layouts -->
+    <a href="projects/Sample8.html" target="_blank" rel="noopener noreferrer">
+        <div class="project-card glass h-full flex flex-col p-6" data-aos="zoom-in" data-aos-delay="100">
+            <h3 class="text-xl font-bold mb-2">Advanced Table Layouts</h3>
+            <p class="text-gray-700 flex-grow">Demonstrates `rowspan` and `colspan` attributes to create complex tables with merged cells.</p>
+        </div>
+    </a>
+
+    <!-- Project Card 8: Styled Data Table -->
+    <a href="projects/Sample7.html" target="_blank" rel="noopener noreferrer">
+        <div class="project-card glass h-full flex flex-col p-6" data-aos="zoom-in" data-aos-delay="200">
+            <h3 class="text-xl font-bold mb-2">Styled Data Table</h3>
+            <p class="text-gray-700 flex-grow">A simple and clean data table with custom styling for headers, cells, and colored backgrounds.</p>
+        </div>
+    </a>
+
+    <!-- Project Card 9: Internal Page Linking -->
+    <a href="projects/Sample10.html" target="_blank" rel="noopener noreferrer">
+        <div class="project-card glass h-full flex flex-col p-6" data-aos="zoom-in" data-aos-delay="300">
+            <h3 class="text-xl font-bold mb-2">Internal Page Linking</h3>
+            <p class="text-gray-700 flex-grow">A poetry page using anchor links to navigate between different sections within the same document.</p>
+        </div>
+    </a>
+
+    <!-- Project Card 10: CSS Link Styling -->
+    <a href="projects/Sample9.html" target="_blank" rel="noopener noreferrer">
+        <div class="project-card glass h-full flex flex-col p-6" data-aos="zoom-in" data-aos-delay="400">
+            <h3 class="text-xl font-bold mb-2">CSS Link Styling</h3>
+            <p class="text-gray-700 flex-grow">Explores styling link states with CSS pseudo-classes: :link, :visited, :hover, and :active.</p>
+        </div>
+    </a>
+
+    <!-- Project Card 11: Styled HTML Lists -->
+    <a href="projects/Sample1.html" target="_blank" rel="noopener noreferrer">
+        <div class="project-card glass h-full flex flex-col p-6" data-aos="zoom-in" data-aos-delay="500">
+            <h3 class="text-xl font-bold mb-2">Styled HTML Lists</h3>
+            <p class="text-gray-700 flex-grow">Examples of styled ordered and unordered lists, demonstrating various `list-style-types` and nesting.</p>
+        </div>
+    </a>
+</div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 px-6 relative">
+        <div class="container mx-auto max-w-6xl">
+            <h2 class="text-5xl font-bold text-center mb-12 glow-text font-pacifico" data-aos="fade-down">Experience & Education</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Experience -->
+                <div class="glass p-8 rounded-3xl" data-aos="fade-right" data-aos-delay="200">
+                    <h3 class="text-3xl font-bold mb-6 text-pink-500">Experience</h3>
+                    <div class="space-y-6">
+                        <div class="border-l-4 border-pink-500 pl-6">
+                            <h4 class="text-xl font-bold">Freelance Fashion Stylist</h4>
+                            <p class="text-pink-500 italic">Personal Projects / Social Media</p>
+                            <ul class="list-disc list-inside text-gray-700 mt-2 space-y-1">
+                                <li>Styled various outfits for casual and semi-formal events</li>
+                                <li>Shared styling ideas online with friends and community</li>
+                                <li>Built a growing social media presence showcasing fashion content</li>
+                            </ul>
+                        </div>
+                        <div class="border-l-4 border-purple-500 pl-6">
+                            <h4 class="text-xl font-bold">Amateur Content Creator</h4>
+                            <p class="text-purple-500 italic">Instagram / TikTok / YouTube</p>
+                            <ul class="list-disc list-inside text-gray-700 mt-2 space-y-1">
+                                <li>Created short video content related to beauty routines and art timelapses</li>
+                                <li>Edited and published videos using mobile apps</li>
+                                <li>Engaged with fashion and beauty communities online</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Education -->
+                <div class="glass p-8 rounded-3xl" data-aos="fade-left" data-aos-delay="400">
+                    <h3 class="text-3xl font-bold mb-6 text-purple-500">Education</h3>
+                    <div class="border-l-4 border-purple-500 pl-6">
+                        <h4 class="text-xl font-bold">Polytechnic University of the Philippines (PUP) Parañaque</h4>
+                        <p class="text-lg text-gray-700 font-semibold">Bachelor of Science in Information Technology (BSIT)</p>
+                        <p class="text-purple-500 italic">Currently 2nd Year, Section 2</p>
+                        <p class="text-gray-700 mt-2">Developing technical skills while pursuing creative passions in fashion and content creation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interests Section -->
+    <section id="interests" class="py-20 px-6 relative">
+        <div class="container mx-auto max-w-4xl text-center">
+            <h2 class="text-5xl font-bold mb-12 glow-text font-pacifico" data-aos="fade-down">My Interests</h2>
+            <div class="flex flex-wrap justify-center gap-6" data-aos="fade-up" data-aos-delay="200">
+                <span class="glass px-6 py-3 rounded-full text-lg font-medium magnetic ripple hover:scale-110 transition-transform">
+                    👗 Fashion Design
+                </span>
+                <span class="glass px-6 py-3 rounded-full text-lg font-medium magnetic ripple hover:scale-110 transition-transform">
+                    💄 Beauty & Skincare
+                </span>
+                <span class="glass px-6 py-3 rounded-full text-lg font-medium magnetic ripple hover:scale-110 transition-transform">
+                    🎨 Drawing & Art
+                </span>
+                <span class="glass px-6 py-3 rounded-full text-lg font-medium magnetic ripple hover:scale-110 transition-transform">
+                    🎬 Video Editing
+                </span>
+                <span class="glass px-6 py-3 rounded-full text-lg font-medium magnetic ripple hover:scale-110 transition-transform">
+                    📸 Content Creation
+                </span>
+                <span class="glass px-6 py-3 rounded-full text-lg font-medium magnetic ripple hover:scale-110 transition-transform">
+                    ✨ Trend Analysis
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-6 animated-bg relative">
+        <div class="container mx-auto max-w-4xl text-center">
+            <h2 class="text-5xl font-bold mb-8 text-white neon-text font-pacifico" data-aos="fade-down">Get In Touch</h2>
+            <div class="glass p-8 rounded-3xl" data-aos="fade-up" data-aos-delay="200">
+                <p class="text-2xl font-bold mb-2">Kenyon Tacda</p>
+                <p class="text-lg mb-4"><i class="fas fa-map-marker-alt mr-2"></i>Santo Niño, Parañaque</p>
+                <div class="space-y-3 mb-8">
+                    <p class="text-lg">
+                        <a href="mailto:your.email@example.com" class="hover:text-pink-500 transition-colors magnetic">
+                            <i class="fas fa-envelope mr-2"></i>your.email@example.com
+                        </a>
+                    </p>
+                    <p class="text-lg">
+                        <a href="tel:+639123456789" class="hover:text-pink-500 transition-colors magnetic">
+                            <i class="fas fa-phone mr-2"></i>+63 912 345 6789
+                        </a>
+                    </p>
+                </div>
+                <div class="flex justify-center space-x-8">
+                    <a href="https://instagram.com/yourprofile" target="_blank" class="social-icon text-4xl transition-all duration-300">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://tiktok.com/@yourprofile" target="_blank" class="social-icon text-4xl transition-all duration-300">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                    <a href="https://youtube.com/yourchannel" target="_blank" class="social-icon text-4xl transition-all duration-300">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center p-6 glass">
+        <p class="text-lg">© <span id="currentYear"></span> Kenyon Tacda (Blythe_Ken). All Rights Reserved.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            easing: 'ease-in-out',
+            once: true
+        });
+
+        // Set current year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Particles.js configuration
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: ["#ec4899", "#a855f7", "#8b5cf6"] },
+                shape: { type: "circle" },
+                opacity: { value: 0.6, random: true },
+                size: { value: 3, random: true },
+                line_linked: { enable: true, distance: 150, color: "#ec4899", opacity: 0.4, width: 1 },
+                move: { enable: true, speed: 2, direction: "none", random: false, straight: false, out_mode: "out", bounce: false }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: { onhover: { enable: true, mode: "repulse" }, onclick: { enable: true, mode: "push" } },
+                modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
+            },
+            retina_detect: true
+        });
+
+        // Scroll progress indicator
+        window.addEventListener('scroll', () => {
+            const scrollTop = document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollPercent = (scrollTop / scrollHeight) * 100;
+            document.getElementById('scrollIndicator').style.width = scrollPercent + '%';
+        });
+
+        // Parallax effect for floating elements
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.parallax-element');
+            parallaxElements.forEach((element, index) => {
+                const speed = 0.5 + (index * 0.1);
+                element.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Navbar blur effect on scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.style.backdropFilter = 'blur(20px)';
+                navbar.style.background = 'rgba(255, 255, 255, 0.1)';
+            } else {
+                navbar.style.backdropFilter = 'blur(10px)';
+                navbar.style.background = 'rgba(255, 255, 255, 0.05)';
+            }
+        });
+
+        // Animate skill bars on scroll
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const skillBarObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const skillBars = entry.target.querySelectorAll('.skill-progress');
+                    skillBars.forEach(bar => {
+                        const width = bar.style.width;
+                        bar.style.width = '0%';
+                        setTimeout(() => {
+                            bar.style.width = width;
+                        }, 200);
+                    });
+                }
+            });
+        }, observerOptions);
+
+        document.getElementById('skills').addEventListener('DOMContentLoaded', () => {
+            skillBarObserver.observe(document.getElementById('skills'));
+        });
+        skillBarObserver.observe(document.getElementById('skills'));
+
+        // Add magnetic effect to buttons
+        document.querySelectorAll('.magnetic').forEach(element => {
+            element.addEventListener('mouseenter', (e) => {
+                gsap.to(e.target, { duration: 0.3, scale: 1.05, ease: "power2.out" });
+            });
+
+            element.addEventListener('mouseleave', (e) => {
+                gsap.to(e.target, { duration: 0.3, scale: 1, ease: "power2.out" });
+            });
+        });
+
+        // Typewriter effect restart on hero visibility
+        const heroObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const typewriterElement = entry.target.querySelector('.typewriter');
+                    if (typewriterElement) {
+                        typewriterElement.style.animation = 'none';
+                        setTimeout(() => {
+                            typewriterElement.style.animation = 'typing 3.5s steps(40, end), blink-caret .75s step-end infinite';
+                        }, 100);
+                    }
+                }
+            });
+        }, { threshold: 0.5 });
+
+        heroObserver.observe(document.getElementById('hero'));
+
+        // Add click ripple effect
+        document.querySelectorAll('.ripple').forEach(element => {
+            element.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.classList.add('ripple-effect');
+
+                this.appendChild(ripple);
+
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
+        // Enhanced loading animation
+        window.addEventListener('load', () => {
+            gsap.from('.float', {
+                duration: 2,
+                y: -50,
+                opacity: 0,
+                stagger: 0.2,
+                ease: "bounce.out"
+            });
+        });
+    </script>
+
+    <style>
+        .ripple-effect {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(0);
+            animation: ripple-animation 0.6s linear;
+            pointer-events: none;
+        }
+
+        @keyframes ripple-animation {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+    </style>
+</body>
+</html>
